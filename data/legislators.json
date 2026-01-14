@@ -1,0 +1,16 @@
+{
+  "ca-32": {
+    "name": "Brad Sherman",
+    "office": "San Fernando Valley Office",
+    "address": "13920 Foothill Blvd., Suite 205, Sylmar, CA 91342",
+    "phone": "+1-818-413-7500",
+    "twitter": "RepBradSherman"
+  },
+  "ny-07": {
+    "name": "Nydia Velázquez",
+    "office": "",
+    "address": "",
+    "phone": "",
+    "twitter": "NydiaVelazquez"
+  }
+}
