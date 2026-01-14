@@ -57,7 +57,7 @@
 
       try{
         // Try local mapping first
-        const res = await fetch('/data/zip_to_district.json');
+        const res = await fetch('data/zip_to_district.json');
         const map = await res.json();
         const slug = map[zip];
         if(slug){
