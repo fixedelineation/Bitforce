@@ -1,13 +1,336 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="content-security-policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-src 'self' https:; font-src 'self'; base-uri 'self'; manifest-src 'self'; connect-src 'self' blob: https: wss:; img-src 'self' data: blob: https:; media-src 'self' https:">
-    <link rel="manifest" href="/manifest.webmanifest">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CA-32 Financial Privacy Action Center</title>
+  <meta name="description" content="Defend your digital property rights. Join the CA-32 Town Hall to demand strong financial privacy protections." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Minimal custom styles for brand colors and subtle patriot aesthetic -->
+  <style>
+    :root{
+      --deep-blue:#0b2545;
+      --slate-900:#0f1724;
+      --laser-orange:#ff5a00;
+      --muted-slate:#94a3b8;
+    }
+    .brand-bg { background: linear-gradient(180deg, rgba(11,37,69,0.98) 0%, rgba(15,23,36,0.95) 100%); }
+    .laser { background: linear-gradient(90deg, var(--laser-orange), #ff7a2a); }
+    .accent-stroke { box-shadow: 0 6px 20px rgba(255,90,0,0.12); }
+    .patriot-stripes::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 10px),
+        radial-gradient(1200px 200px at 10% 0%, rgba(255,255,255,0.02), transparent 20%);
+      pointer-events:none;
+      mix-blend-mode:overlay;
+    }
+    .phone-box:active { transform: translateY(1px) scale(.997); }
+    .smooth { transition: all .18s ease-in-out; }
+  </style>
+</head>
+<body class="min-h-screen antialiased text-slate-100 bg-gradient-to-b from-slate-900 via-[#071433] to-[#071126]">
+
+  <main class="max-w-5xl mx-auto p-5 md:p-8">
+    <!-- HERO -->
+    <section class="relative overflow-hidden rounded-2xl brand-bg patriot-stripes p-6 md:p-10 isolate">
+      <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-10 bg-gradient-to-tr from-white to-transparent blur-3xl pointer-events-none"></div>
+      <div class="flex flex-col md:flex-row gap-6 md:items-center">
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight drop-shadow-md">
+            Defend Your Digital Property Rights
+          </h1>
+          <p class="mt-3 text-sm md:text-base text-[color:var(--muted-slate)] max-w-xl">
+            Join the community Town Hall to demand strong financial privacy protections.
+            Call in, customize your message, and make your voice heard.
+          </p>
+
+          <!-- Countdown -->
+          <div class="mt-6 inline-flex items-center gap-4 rounded-xl bg-slate-800/70 px-4 py-3 shadow-lg">
+            <div class="text-xs text-[color:var(--muted-slate)]">Town Hall:</div>
+            <div>
+              <div class="text-sm md:text-base font-semibold">Jan 21 • 7:00 PM (local time)</div>
+              <div id="countdown" class="mt-1 flex gap-2 text-sm md:text-base">
+                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
+                  <div id="cd-days" class="text-lg font-medium">--</div>
+                  <div class="text-[10px] text-[color:var(--muted-slate)]">days</div>
+                </div>
+                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
+                  <div id="cd-hours" class="text-lg font-medium">--</div>
+                  <div class="text-[10px] text-[color:var(--muted-slate)]">hrs</div>
+                </div>
+                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
+                  <div id="cd-mins" class="text-lg font-medium">--</div>
+                  <div class="text-[10px] text-[color:var(--muted-slate)]">min</div>
+                </div>
+                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
+                  <div id="cd-secs" class="text-lg font-medium">--</div>
+                  <div class="text-[10px] text-[color:var(--muted-slate)]">sec</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dial-in box -->
+        <aside class="w-full md:w-80">
+          <div class="rounded-lg overflow-hidden border border-slate-700/50 bg-gradient-to-b from-slate-800/60 to-slate-900/40 p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs text-[color:var(--muted-slate)]">Call In</div>
+                <div class="text-sm md:text-base font-semibold">Town Hall Dial-In</div>
+              </div>
+              <div class="text-[12px] text-[color:var(--muted-slate)]">Mobile-friendly</div>
+            </div>
+
+            <div class="mt-3 grid gap-3">
+              <a href="tel:+18559200548" class="phone-box smooth flex items-center justify-between px-4 py-3 rounded-lg bg-slate-700/60 hover:bg-slate-700/80" aria-label="Call 855-920-0548">
+                <div>
+                  <div class="text-xs text-[color:var(--muted-slate)]">Toll Free</div>
+                  <div class="text-lg font-medium">855-920-0548</div>
+                </div>
+                <svg class="w-6 h-6 text-[color:var(--laser-orange)]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.5a1 1 0 01.948.684l1.2 3.6a1 1 0 01-.21.98l-1.2 1.2a15.054 15.054 0 006.586 6.586l1.2-1.2a1 1 0 01.98-.21l3.6 1.2A1 1 0 0121 18.5V21a2 2 0 01-2 2h-1C8.268 23 1 15.732 1 6V5a2 2 0 012-2z" />
+                </svg>
+              </a>
+
+              <a href="tel:+17473318100" class="phone-box smooth flex items-center justify-between px-4 py-3 rounded-lg bg-slate-700/60 hover:bg-slate-700/80" aria-label="Call 747-331-8100">
+                <div>
+                  <div class="text-xs text-[color:var(--muted-slate)]">Alternate</div>
+                  <div class="text-lg font-medium">747-331-8100</div>
+                </div>
+                <svg class="w-6 h-6 text-[color:var(--laser-orange)]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.5a1 1 0 01.948.684l1.2 3.6a1 1 0 01-.21.98l-1.2 1.2a15.054 15.054 0 006.586 6.586l1.2-1.2a1 1 0 01.98-.21l3.6 1.2A1 1 0 0121 18.5V21a2 2 0 01-2 2h-1C8.268 23 1 15.732 1 6V5a2 2 0 012-2z" />
+                </svg>
+              </a>
+
+              <button id="tapToCall" class="mt-1 w-full py-2 rounded-md laser text-slate-900 font-semibold accent-stroke smooth focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-400">
+                Tap to Call
+              </button>
+
+              <div class="mt-2 text-xs text-[color:var(--muted-slate)]">If you're on a smartphone, "Tap to Call" will place the call immediately. On desktop it will open your calling app if configured.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT: Script customizer + Target card -->
+    <section class="mt-7 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Script Customizer -->
+      <div class="md:col-span-2 rounded-2xl bg-slate-800/60 border border-slate-700 p-5">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div>
+            <h2 class="text-lg font-semibold">Script Customizer</h2>
+            <p class="mt-1 text-sm text-[color:var(--muted-slate)] max-w-xl">Select a tone, personalize with your name and neighborhood, then copy the final script to paste into the call or voicemail.</p>
+          </div>
+          <div class="text-sm text-[color:var(--muted-slate)] whitespace-nowrap">~30–60s call</div>
+        </div>
+
+        <div class="mt-4 grid gap-4">
+          <label class="sr-only" for="scriptSelect">Choose script</label>
+          <select id="scriptSelect" class="w-full md:w-1/2 bg-slate-700/50 border border-slate-600 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)] smooth">
+            <option value="privacy">The Privacy Script</option>
+            <option value="security">The National Security Script</option>
+            <option value="innovation">The Innovation Script</option>
+          </select>
+
+          <div class="grid md:grid-cols-2 gap-3">
+            <input id="inputName" type="text" placeholder="Your name (e.g. Jane Doe)" class="bg-slate-700/40 border border-slate-600 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)]" />
+            <input id="inputNeighborhood" type="text" placeholder="Neighborhood (e.g. Encino)" class="bg-slate-700/40 border border-slate-600 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)]" />
+          </div>
+
+          <label class="text-sm text-[color:var(--muted-slate)]">Preview / Edit Final Script</label>
+          <textarea id="finalScript" rows="6" class="w-full resize-y bg-slate-800/50 border border-slate-600 rounded-md px-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)]"></textarea>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button id="copyBtn" class="laser text-slate-900 px-4 py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-400 smooth">
+              Copy to Clipboard
+            </button>
+
+            <button id="resetBtn" class="px-3 py-2 rounded-md bg-slate-700/50 border border-slate-600 text-sm text-slate-200 hover:bg-slate-700/70 smooth">
+              Reset Fields
+            </button>
+
+            <div id="copyToast" class="ml-auto text-sm text-green-400 opacity-0 transition-opacity duration-200">Copied ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Target Card -->
+      <aside class="rounded-2xl bg-slate-800/50 border border-slate-700 p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#122b54] to-[#18406e] flex items-center justify-center text-xl font-bold text-white/90">
+              BS
+            </div>
+            <div>
+              <div class="text-base font-semibold">Brad Sherman</div>
+              <div class="text-xs text-[color:var(--muted-slate)]">U.S. Representative, CA-32</div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-sm text-[color:var(--muted-slate)]">
+            <div class="font-medium">San Fernando Valley Office</div>
+            <address class="not-italic mt-2">
+              13920 Foothill Blvd.<br />
+              Suite 205<br />
+              Sylmar, CA 91342
+            </address>
+            <div class="mt-3 text-xs">Phone: <a href="tel:+18184137500" class="text-[color:var(--laser-orange)] underline">818-413-7500</a></div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <a id="tweetBtn" target="_blank" rel="noopener noreferrer" href="#" class="w-full inline-flex items-center justify-center gap-2 py-2 rounded-md bg-[#1d9bf0] hover:bg-[#1991da] text-white font-semibold smooth">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.26 4.26 0 001.88-2.35 8.43 8.43 0 01-2.7 1.04 4.22 4.22 0 00-7.2 3.85A12 12 0 013 4.8a4.22 4.22 0 001.31 5.63 4.18 4.18 0 01-1.91-.53v.05a4.22 4.22 0 003.38 4.13c-.43.12-.9.18-1.38.07a4.22 4.22 0 003.95 2.92A8.48 8.48 0 012 19.54 11.95 11.95 0 008.29 21c7.55 0 11.68-6.26 11.68-11.69v-.53A8.3 8.3 0 0022.46 6z"></path>
+            </svg>
+            Tweet at Him
+          </a>
+
+          <a href="https://sherman.house.gov/contact" target="_blank" rel="noopener noreferrer" class="mt-3 block text-center text-xs text-[color:var(--muted-slate)] underline">
+            Send an official message via office contact page
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-sm text-[color:var(--muted-slate)]">
+      Built for phone-banking and calls. Stay civil — keep messages concise and factual. <br class="hidden sm:inline" />
+      Vibed with <a href="https://shakespeare.diy" target="_blank" rel="noopener noreferrer" class="text-[color:var(--laser-orange)] underline">Shakespeare</a>
+    </footer>
+  </main>
+
+  <script>
+    // Countdown
+    (function(){
+      var now = new Date();
+      var year = now.getFullYear();
+      var target = new Date(year, 0, 21, 19, 0, 0, 0);
+      if (target.getTime() <= now.getTime()) target = new Date(year + 1, 0, 21, 19, 0, 0, 0);
+
+      var elDays = document.getElementById('cd-days');
+      var elHours = document.getElementById('cd-hours');
+      var elMins = document.getElementById('cd-mins');
+      var elSecs = document.getElementById('cd-secs');
+
+      function update(){
+        var now = new Date();
+        var diff = Math.max(0, target - now);
+        var secs = Math.floor(diff / 1000);
+        var days = Math.floor(secs / 86400);
+        var hours = Math.floor((secs % 86400) / 3600);
+        var mins = Math.floor((secs % 3600) / 60);
+        var s = secs % 60;
+
+        elDays.textContent = days;
+        elHours.textContent = String(hours).padStart(2, '0');
+        elMins.textContent = String(mins).padStart(2, '0');
+        elSecs.textContent = String(s).padStart(2, '0');
+
+        if (diff <= 0){
+          document.getElementById('countdown').innerHTML = '<div class="text-sm font-semibold text-green-300">The Town Hall is happening now or has concluded.</div>';
+          clearInterval(timer);
+        }
+      }
+      update();
+      var timer = setInterval(update, 1000);
+    })();
+
+    // Script Customizer
+    var templates = {
+      privacy: "Hello, my name is {name} from {neighborhood}. I'm calling to urge Representative Brad Sherman to protect Americans' financial privacy. Please oppose measures that weaken encryption or expose sensitive financial data without proper warrants. Thank you for listening.",
+      security: "Hello, my name is {name} from {neighborhood}. I respect the need for effective national security, but I ask Representative Brad Sherman to ensure any security policies preserve civil liberties and strong privacy protections for consumers. Please support targeted measures that do not undermine basic rights.",
+      innovation: "Hello, my name is {name} from {neighborhood}. As someone concerned about innovation in our district, I urge Representative Brad Sherman to support policies that protect consumer privacy while enabling responsible innovation — not broad surveillance that harms startups and the economy. Thank you."
+    };
+
+    var scriptSelect = document.getElementById('scriptSelect');
+    var inputName = document.getElementById('inputName');
+    var inputNeighborhood = document.getElementById('inputNeighborhood');
+    var finalScript = document.getElementById('finalScript');
+    var copyBtn = document.getElementById('copyBtn');
+    var copyToast = document.getElementById('copyToast');
+    var resetBtn = document.getElementById('resetBtn');
+    var manuallyEdited = false;
+
+    function applyTemplate(){
+      if (manuallyEdited) return;
+      var key = scriptSelect.value;
+      var name = inputName.value.trim() || "{Your name}";
+      var nhood = inputNeighborhood.value.trim() || "{Your neighborhood}";
+      var text = templates[key] || templates.privacy;
+      text = text.replace(/\{name\}/g, name).replace(/\{neighborhood\}/g, nhood);
+      finalScript.value = text;
+    }
+
+    applyTemplate();
+
+    scriptSelect.addEventListener('change', function(){ manuallyEdited = false; applyTemplate(); });
+    inputName.addEventListener('input', applyTemplate);
+    inputNeighborhood.addEventListener('input', applyTemplate);
+    finalScript.addEventListener('input', function(){ manuallyEdited = true; });
+
+    copyBtn.addEventListener('click', function(){
+      var text = finalScript.value;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function(){
+          copyToast.style.opacity = 1;
+          setTimeout(function(){ copyToast.style.opacity = 0; }, 2000);
+        }).catch(function(){
+          fallbackCopy();
+        });
+      } else {
+        fallbackCopy();
+      }
+      function fallbackCopy(){
+        finalScript.select();
+        try {
+          document.execCommand('copy');
+          copyToast.style.opacity = 1;
+          setTimeout(function(){ copyToast.style.opacity = 0; }, 2000);
+        } catch(e){
+          copyToast.textContent = 'Copy failed';
+          copyToast.style.opacity = 1;
+          setTimeout(function(){ copyToast.style.opacity = 0; copyToast.textContent = 'Copied ✓'; }, 3000);
+        }
+      }
+    });
+
+    resetBtn.addEventListener('click', function(){
+      inputName.value = '';
+      inputNeighborhood.value = '';
+      scriptSelect.value = 'privacy';
+      manuallyEdited = false;
+      applyTemplate();
+    });
+
+    // Tap to Call
+    document.getElementById('tapToCall').addEventListener('click', function(){
+      window.location.href = 'tel:+18559200548';
+    });
+
+    // Tweet button
+    (function(){
+      var suggested = '@RepBradSherman Please protect financial privacy and civil liberties. I urge you to oppose policy that weakens encryption or broad financial data access. #CA32';
+      var href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(suggested);
+      document.getElementById('tweetBtn').setAttribute('href', href);
+    })();
+
+    // Keyboard shortcut Ctrl/Cmd+Shift+C to copy
+    document.addEventListener('keydown', function(e){
+      var mod = navigator.platform.indexOf('Mac') > -1 ? e.metaKey : e.ctrlKey;
+      if (mod && e.shiftKey && e.key.toLowerCase() === 'c') {
+        e.preventDefault();
+        copyBtn.click();
+      }
+    });
+  </script>
+</body>
 </html>
