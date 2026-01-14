@@ -2,75 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>CA-32 Financial Privacy Action Center</title>
   <meta name="description" content="Defend your digital property rights. Join the CA-32 Town Hall to demand strong financial privacy protections." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'laser': '#ff5a00',
+            'laser-light': '#ff7a2a',
+            'muted': '#94a3b8',
+            'deep-blue': '#0b2545',
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Minimal custom styles for brand colors and subtle patriot aesthetic -->
   <style>
-    :root{
-      --deep-blue:#0b2545;
-      --slate-900:#0f1724;
-      --laser-orange:#ff5a00;
-      --muted-slate:#94a3b8;
+    html, body {
+      -webkit-text-size-adjust: 100%;
+      background-color: #0f172a;
     }
-    .brand-bg { background: linear-gradient(180deg, rgba(11,37,69,0.98) 0%, rgba(15,23,36,0.95) 100%); }
-    .laser { background: linear-gradient(90deg, var(--laser-orange), #ff7a2a); }
-    .accent-stroke { box-shadow: 0 6px 20px rgba(255,90,0,0.12); }
-    .patriot-stripes::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 10px),
-        radial-gradient(1200px 200px at 10% 0%, rgba(255,255,255,0.02), transparent 20%);
-      pointer-events:none;
-      mix-blend-mode:overlay;
+    body {
+      background: linear-gradient(180deg, #0f172a 0%, #071433 50%, #071126 100%);
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
     }
-    .phone-box:active { transform: translateY(1px) scale(.997); }
-    .smooth { transition: all .18s ease-in-out; }
+    .brand-bg {
+      background: linear-gradient(180deg, rgba(11,37,69,0.98) 0%, rgba(15,23,36,0.95) 100%);
+    }
+    .laser-bg {
+      background: linear-gradient(90deg, #ff5a00, #ff7a2a);
+    }
+    .accent-stroke {
+      -webkit-box-shadow: 0 6px 20px rgba(255,90,0,0.12);
+      box-shadow: 0 6px 20px rgba(255,90,0,0.12);
+    }
+    .patriot-stripes {
+      position: relative;
+    }
+    .patriot-stripes::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 10px);
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .phone-box:active {
+      -webkit-transform: translateY(1px) scale(0.997);
+      transform: translateY(1px) scale(0.997);
+    }
+    .smooth {
+      -webkit-transition: all 0.18s ease-in-out;
+      transition: all 0.18s ease-in-out;
+    }
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    input, textarea, select, button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      font-size: 16px;
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+    }
   </style>
 </head>
-<body class="min-h-screen antialiased text-slate-100 bg-gradient-to-b from-slate-900 via-[#071433] to-[#071126]">
+<body class="min-h-screen antialiased text-slate-100">
 
   <main class="max-w-5xl mx-auto p-5 md:p-8">
     <!-- HERO -->
-    <section class="relative overflow-hidden rounded-2xl brand-bg patriot-stripes p-6 md:p-10 isolate">
-      <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-10 bg-gradient-to-tr from-white to-transparent blur-3xl pointer-events-none"></div>
-      <div class="flex flex-col md:flex-row gap-6 md:items-center">
+    <section class="relative overflow-hidden rounded-2xl brand-bg patriot-stripes p-6 md:p-10">
+      <div class="relative z-10 flex flex-col md:flex-row gap-6 md:items-center">
         <div class="flex-1">
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight drop-shadow-md">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
             Defend Your Digital Property Rights
           </h1>
-          <p class="mt-3 text-sm md:text-base text-[color:var(--muted-slate)] max-w-xl">
+          <p class="mt-3 text-sm md:text-base text-muted max-w-xl">
             Join the community Town Hall to demand strong financial privacy protections.
             Call in, customize your message, and make your voice heard.
           </p>
 
           <!-- Countdown -->
-          <div class="mt-6 inline-flex items-center gap-4 rounded-xl bg-slate-800/70 px-4 py-3 shadow-lg">
-            <div class="text-xs text-[color:var(--muted-slate)]">Town Hall:</div>
+          <div class="mt-6 inline-flex items-center gap-4 rounded-xl bg-slate-800 bg-opacity-70 px-4 py-3 shadow-lg">
+            <div class="text-xs text-muted">Town Hall:</div>
             <div>
-              <div class="text-sm md:text-base font-semibold">Jan 21 • 7:00 PM (local time)</div>
+              <div class="text-sm md:text-base font-semibold text-white">Jan 21 • 7:00 PM (local time)</div>
               <div id="countdown" class="mt-1 flex gap-2 text-sm md:text-base">
-                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
-                  <div id="cd-days" class="text-lg font-medium">--</div>
-                  <div class="text-[10px] text-[color:var(--muted-slate)]">days</div>
+                <div class="px-3 py-1 rounded bg-slate-700 bg-opacity-60 text-center">
+                  <div id="cd-days" class="text-lg font-medium text-white">--</div>
+                  <div class="text-xs text-muted">days</div>
                 </div>
-                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
-                  <div id="cd-hours" class="text-lg font-medium">--</div>
-                  <div class="text-[10px] text-[color:var(--muted-slate)]">hrs</div>
+                <div class="px-3 py-1 rounded bg-slate-700 bg-opacity-60 text-center">
+                  <div id="cd-hours" class="text-lg font-medium text-white">--</div>
+                  <div class="text-xs text-muted">hrs</div>
                 </div>
-                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
-                  <div id="cd-mins" class="text-lg font-medium">--</div>
-                  <div class="text-[10px] text-[color:var(--muted-slate)]">min</div>
+                <div class="px-3 py-1 rounded bg-slate-700 bg-opacity-60 text-center">
+                  <div id="cd-mins" class="text-lg font-medium text-white">--</div>
+                  <div class="text-xs text-muted">min</div>
                 </div>
-                <div class="px-3 py-1 rounded bg-slate-700/60 text-center">
-                  <div id="cd-secs" class="text-lg font-medium">--</div>
-                  <div class="text-[10px] text-[color:var(--muted-slate)]">sec</div>
+                <div class="px-3 py-1 rounded bg-slate-700 bg-opacity-60 text-center">
+                  <div id="cd-secs" class="text-lg font-medium text-white">--</div>
+                  <div class="text-xs text-muted">sec</div>
                 </div>
               </div>
             </div>
@@ -79,41 +130,41 @@
 
         <!-- Dial-in box -->
         <aside class="w-full md:w-80">
-          <div class="rounded-lg overflow-hidden border border-slate-700/50 bg-gradient-to-b from-slate-800/60 to-slate-900/40 p-4">
+          <div class="rounded-lg overflow-hidden border border-slate-600 bg-slate-800 bg-opacity-60 p-4">
             <div class="flex items-center justify-between">
               <div>
-                <div class="text-xs text-[color:var(--muted-slate)]">Call In</div>
-                <div class="text-sm md:text-base font-semibold">Town Hall Dial-In</div>
+                <div class="text-xs text-muted">Call In</div>
+                <div class="text-sm md:text-base font-semibold text-white">Town Hall Dial-In</div>
               </div>
-              <div class="text-[12px] text-[color:var(--muted-slate)]">Mobile-friendly</div>
+              <div class="text-xs text-muted">Mobile-friendly</div>
             </div>
 
             <div class="mt-3 grid gap-3">
-              <a href="tel:+18559200548" class="phone-box smooth flex items-center justify-between px-4 py-3 rounded-lg bg-slate-700/60 hover:bg-slate-700/80" aria-label="Call 855-920-0548">
+              <a href="tel:+18559200548" class="phone-box smooth flex items-center justify-between px-4 py-3 rounded-lg bg-slate-700 bg-opacity-60 hover:bg-opacity-80" aria-label="Call 855-920-0548">
                 <div>
-                  <div class="text-xs text-[color:var(--muted-slate)]">Toll Free</div>
-                  <div class="text-lg font-medium">855-920-0548</div>
+                  <div class="text-xs text-muted">Toll Free</div>
+                  <div class="text-lg font-medium text-white">855-920-0548</div>
                 </div>
-                <svg class="w-6 h-6 text-[color:var(--laser-orange)]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-6 h-6 text-laser" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.5a1 1 0 01.948.684l1.2 3.6a1 1 0 01-.21.98l-1.2 1.2a15.054 15.054 0 006.586 6.586l1.2-1.2a1 1 0 01.98-.21l3.6 1.2A1 1 0 0121 18.5V21a2 2 0 01-2 2h-1C8.268 23 1 15.732 1 6V5a2 2 0 012-2z" />
                 </svg>
               </a>
 
-              <a href="tel:+17473318100" class="phone-box smooth flex items-center justify-between px-4 py-3 rounded-lg bg-slate-700/60 hover:bg-slate-700/80" aria-label="Call 747-331-8100">
+              <a href="tel:+17473318100" class="phone-box smooth flex items-center justify-between px-4 py-3 rounded-lg bg-slate-700 bg-opacity-60 hover:bg-opacity-80" aria-label="Call 747-331-8100">
                 <div>
-                  <div class="text-xs text-[color:var(--muted-slate)]">Alternate</div>
-                  <div class="text-lg font-medium">747-331-8100</div>
+                  <div class="text-xs text-muted">Alternate</div>
+                  <div class="text-lg font-medium text-white">747-331-8100</div>
                 </div>
-                <svg class="w-6 h-6 text-[color:var(--laser-orange)]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-6 h-6 text-laser" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.5a1 1 0 01.948.684l1.2 3.6a1 1 0 01-.21.98l-1.2 1.2a15.054 15.054 0 006.586 6.586l1.2-1.2a1 1 0 01.98-.21l3.6 1.2A1 1 0 0121 18.5V21a2 2 0 01-2 2h-1C8.268 23 1 15.732 1 6V5a2 2 0 012-2z" />
                 </svg>
               </a>
 
-              <button id="tapToCall" class="mt-1 w-full py-2 rounded-md laser text-slate-900 font-semibold accent-stroke smooth focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-400">
+              <button id="tapToCall" class="mt-1 w-full py-3 rounded-lg laser-bg text-slate-900 font-semibold accent-stroke smooth">
                 Tap to Call
               </button>
 
-              <div class="mt-2 text-xs text-[color:var(--muted-slate)]">If you're on a smartphone, "Tap to Call" will place the call immediately. On desktop it will open your calling app if configured.</div>
+              <div class="mt-2 text-xs text-muted">If you're on a smartphone, "Tap to Call" will place the call immediately.</div>
             </div>
           </div>
         </aside>
@@ -123,78 +174,78 @@
     <!-- MAIN CONTENT: Script customizer + Target card -->
     <section class="mt-7 grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Script Customizer -->
-      <div class="md:col-span-2 rounded-2xl bg-slate-800/60 border border-slate-700 p-5">
+      <div class="md:col-span-2 rounded-2xl bg-slate-800 bg-opacity-60 border border-slate-700 p-5">
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div>
-            <h2 class="text-lg font-semibold">Script Customizer</h2>
-            <p class="mt-1 text-sm text-[color:var(--muted-slate)] max-w-xl">Select a tone, personalize with your name and neighborhood, then copy the final script to paste into the call or voicemail.</p>
+            <h2 class="text-lg font-semibold text-white">Script Customizer</h2>
+            <p class="mt-1 text-sm text-muted max-w-xl">Select a tone, personalize with your name and neighborhood, then copy the final script.</p>
           </div>
-          <div class="text-sm text-[color:var(--muted-slate)] whitespace-nowrap">~30–60s call</div>
+          <div class="text-sm text-muted whitespace-nowrap">~30–60s call</div>
         </div>
 
         <div class="mt-4 grid gap-4">
           <label class="sr-only" for="scriptSelect">Choose script</label>
-          <select id="scriptSelect" class="w-full md:w-1/2 bg-slate-700/50 border border-slate-600 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)] smooth">
+          <select id="scriptSelect" class="w-full md:w-1/2 bg-slate-700 border border-slate-600 rounded-lg px-3 py-3 text-white smooth">
             <option value="privacy">The Privacy Script</option>
             <option value="security">The National Security Script</option>
             <option value="innovation">The Innovation Script</option>
           </select>
 
           <div class="grid md:grid-cols-2 gap-3">
-            <input id="inputName" type="text" placeholder="Your name (e.g. Jane Doe)" class="bg-slate-700/40 border border-slate-600 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)]" />
-            <input id="inputNeighborhood" type="text" placeholder="Neighborhood (e.g. Encino)" class="bg-slate-700/40 border border-slate-600 rounded-md px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)]" />
+            <input id="inputName" type="text" placeholder="Your name (e.g. Jane Doe)" class="bg-slate-700 border border-slate-600 rounded-lg px-3 py-3 text-white placeholder-slate-400" />
+            <input id="inputNeighborhood" type="text" placeholder="Neighborhood (e.g. Encino)" class="bg-slate-700 border border-slate-600 rounded-lg px-3 py-3 text-white placeholder-slate-400" />
           </div>
 
-          <label class="text-sm text-[color:var(--muted-slate)]">Preview / Edit Final Script</label>
-          <textarea id="finalScript" rows="6" class="w-full resize-y bg-slate-800/50 border border-slate-600 rounded-md px-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-[color:var(--laser-orange)]"></textarea>
+          <label class="text-sm text-muted">Preview / Edit Final Script</label>
+          <textarea id="finalScript" rows="6" class="w-full resize-y bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400"></textarea>
 
           <div class="flex flex-wrap items-center gap-3">
-            <button id="copyBtn" class="laser text-slate-900 px-4 py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-400 smooth">
+            <button id="copyBtn" class="laser-bg text-slate-900 px-5 py-3 rounded-lg font-semibold accent-stroke smooth">
               Copy to Clipboard
             </button>
 
-            <button id="resetBtn" class="px-3 py-2 rounded-md bg-slate-700/50 border border-slate-600 text-sm text-slate-200 hover:bg-slate-700/70 smooth">
+            <button id="resetBtn" class="px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-sm text-slate-200 hover:bg-slate-600 smooth">
               Reset Fields
             </button>
 
-            <div id="copyToast" class="ml-auto text-sm text-green-400 opacity-0 transition-opacity duration-200">Copied ✓</div>
+            <div id="copyToast" class="ml-auto text-sm text-green-400 opacity-0 smooth">Copied ✓</div>
           </div>
         </div>
       </div>
 
       <!-- Target Card -->
-      <aside class="rounded-2xl bg-slate-800/50 border border-slate-700 p-5 flex flex-col justify-between">
+      <aside class="rounded-2xl bg-slate-800 bg-opacity-50 border border-slate-700 p-5 flex flex-col justify-between">
         <div>
           <div class="flex items-center gap-3">
-            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#122b54] to-[#18406e] flex items-center justify-center text-xl font-bold text-white/90">
+            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center text-xl font-bold text-white">
               BS
             </div>
             <div>
-              <div class="text-base font-semibold">Brad Sherman</div>
-              <div class="text-xs text-[color:var(--muted-slate)]">U.S. Representative, CA-32</div>
+              <div class="text-base font-semibold text-white">Brad Sherman</div>
+              <div class="text-xs text-muted">U.S. Representative, CA-32</div>
             </div>
           </div>
 
-          <div class="mt-4 text-sm text-[color:var(--muted-slate)]">
-            <div class="font-medium">San Fernando Valley Office</div>
+          <div class="mt-4 text-sm text-muted">
+            <div class="font-medium text-slate-300">San Fernando Valley Office</div>
             <address class="not-italic mt-2">
               13920 Foothill Blvd.<br />
               Suite 205<br />
               Sylmar, CA 91342
             </address>
-            <div class="mt-3 text-xs">Phone: <a href="tel:+18184137500" class="text-[color:var(--laser-orange)] underline">818-413-7500</a></div>
+            <div class="mt-3 text-xs">Phone: <a href="tel:+18184137500" class="text-laser underline">818-413-7500</a></div>
           </div>
         </div>
 
         <div class="mt-5">
-          <a id="tweetBtn" target="_blank" rel="noopener noreferrer" href="#" class="w-full inline-flex items-center justify-center gap-2 py-2 rounded-md bg-[#1d9bf0] hover:bg-[#1991da] text-white font-semibold smooth">
+          <a id="tweetBtn" target="_blank" rel="noopener noreferrer" href="#" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold smooth">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.26 4.26 0 001.88-2.35 8.43 8.43 0 01-2.7 1.04 4.22 4.22 0 00-7.2 3.85A12 12 0 013 4.8a4.22 4.22 0 001.31 5.63 4.18 4.18 0 01-1.91-.53v.05a4.22 4.22 0 003.38 4.13c-.43.12-.9.18-1.38.07a4.22 4.22 0 003.95 2.92A8.48 8.48 0 012 19.54 11.95 11.95 0 008.29 21c7.55 0 11.68-6.26 11.68-11.69v-.53A8.3 8.3 0 0022.46 6z"></path>
             </svg>
             Tweet at Him
           </a>
 
-          <a href="https://sherman.house.gov/contact" target="_blank" rel="noopener noreferrer" class="mt-3 block text-center text-xs text-[color:var(--muted-slate)] underline">
+          <a href="https://sherman.house.gov/contact" target="_blank" rel="noopener noreferrer" class="mt-3 block text-center text-xs text-muted underline">
             Send an official message via office contact page
           </a>
         </div>
@@ -202,9 +253,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="mt-8 text-center text-sm text-[color:var(--muted-slate)]">
-      Built for phone-banking and calls. Stay civil — keep messages concise and factual. <br class="hidden sm:inline" />
-      Vibed with <a href="https://shakespeare.diy" target="_blank" rel="noopener noreferrer" class="text-[color:var(--laser-orange)] underline">Shakespeare</a>
+    <footer class="mt-8 text-center text-sm text-muted">
+      Built for phone-banking and calls. Stay civil — keep messages concise and factual.<br />
+      Vibed with <a href="https://shakespeare.diy" target="_blank" rel="noopener noreferrer" class="text-laser underline">Shakespeare</a>
     </footer>
   </main>
 
@@ -214,29 +265,35 @@
       var now = new Date();
       var year = now.getFullYear();
       var target = new Date(year, 0, 21, 19, 0, 0, 0);
-      if (target.getTime() <= now.getTime()) target = new Date(year + 1, 0, 21, 19, 0, 0, 0);
+      if (target.getTime() <= now.getTime()) {
+        target = new Date(year + 1, 0, 21, 19, 0, 0, 0);
+      }
 
       var elDays = document.getElementById('cd-days');
       var elHours = document.getElementById('cd-hours');
       var elMins = document.getElementById('cd-mins');
       var elSecs = document.getElementById('cd-secs');
 
+      function pad(n) {
+        return n < 10 ? '0' + n : String(n);
+      }
+
       function update(){
         var now = new Date();
         var diff = Math.max(0, target - now);
-        var secs = Math.floor(diff / 1000);
-        var days = Math.floor(secs / 86400);
-        var hours = Math.floor((secs % 86400) / 3600);
-        var mins = Math.floor((secs % 3600) / 60);
-        var s = secs % 60;
+        var totalSecs = Math.floor(diff / 1000);
+        var days = Math.floor(totalSecs / 86400);
+        var hours = Math.floor((totalSecs % 86400) / 3600);
+        var mins = Math.floor((totalSecs % 3600) / 60);
+        var secs = totalSecs % 60;
 
-        elDays.textContent = days;
-        elHours.textContent = String(hours).padStart(2, '0');
-        elMins.textContent = String(mins).padStart(2, '0');
-        elSecs.textContent = String(s).padStart(2, '0');
+        elDays.textContent = String(days);
+        elHours.textContent = pad(hours);
+        elMins.textContent = pad(mins);
+        elSecs.textContent = pad(secs);
 
         if (diff <= 0){
-          document.getElementById('countdown').innerHTML = '<div class="text-sm font-semibold text-green-300">The Town Hall is happening now or has concluded.</div>';
+          document.getElementById('countdown').innerHTML = '<div class="text-sm font-semibold text-green-400">The Town Hall is happening now or has concluded.</div>';
           clearInterval(timer);
         }
       }
@@ -272,34 +329,49 @@
 
     applyTemplate();
 
-    scriptSelect.addEventListener('change', function(){ manuallyEdited = false; applyTemplate(); });
+    scriptSelect.addEventListener('change', function(){
+      manuallyEdited = false;
+      applyTemplate();
+    });
     inputName.addEventListener('input', applyTemplate);
     inputNeighborhood.addEventListener('input', applyTemplate);
-    finalScript.addEventListener('input', function(){ manuallyEdited = true; });
+    finalScript.addEventListener('input', function(){
+      manuallyEdited = true;
+    });
 
     copyBtn.addEventListener('click', function(){
       var text = finalScript.value;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function(){
-          copyToast.style.opacity = 1;
-          setTimeout(function(){ copyToast.style.opacity = 0; }, 2000);
+          showToast();
         }).catch(function(){
           fallbackCopy();
         });
       } else {
         fallbackCopy();
       }
+
       function fallbackCopy(){
         finalScript.select();
+        finalScript.setSelectionRange(0, 99999);
         try {
           document.execCommand('copy');
-          copyToast.style.opacity = 1;
-          setTimeout(function(){ copyToast.style.opacity = 0; }, 2000);
+          showToast();
         } catch(e){
           copyToast.textContent = 'Copy failed';
-          copyToast.style.opacity = 1;
-          setTimeout(function(){ copyToast.style.opacity = 0; copyToast.textContent = 'Copied ✓'; }, 3000);
+          copyToast.style.opacity = '1';
+          setTimeout(function(){
+            copyToast.style.opacity = '0';
+            copyToast.textContent = 'Copied ✓';
+          }, 3000);
         }
+      }
+
+      function showToast(){
+        copyToast.style.opacity = '1';
+        setTimeout(function(){
+          copyToast.style.opacity = '0';
+        }, 2000);
       }
     });
 
