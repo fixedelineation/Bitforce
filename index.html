@@ -30,13 +30,7 @@
     <section class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="col-span-2 bg-slate-800 p-4 rounded-lg">
         <h3 class="font-semibold">Top 5 Anti-Bitcoin Politicians</h3>
-        <ol class="mt-3 space-y-2 text-sm">
-          <li class="flex justify-between items-center">Sen. Example A <button class="ml-3 px-3 py-1 bg-blue-500 rounded" data-twitter="ExampleA">Tweet</button></li>
-          <li class="flex justify-between items-center">Rep. Example B <button class="ml-3 px-3 py-1 bg-blue-500 rounded" data-twitter="ExampleB">Tweet</button></li>
-          <li class="flex justify-between items-center">Rep. Example C <button class="ml-3 px-3 py-1 bg-blue-500 rounded" data-twitter="ExampleC">Tweet</button></li>
-          <li class="flex justify-between items-center">Sen. Example D <button class="ml-3 px-3 py-1 bg-blue-500 rounded" data-twitter="ExampleD">Tweet</button></li>
-          <li class="flex justify-between items-center">Rep. Example E <button class="ml-3 px-3 py-1 bg-blue-500 rounded" data-twitter="ExampleE">Tweet</button></li>
-        </ol>
+        <div id="top5" class="mt-3 grid grid-cols-1 gap-3"></div>
       </div>
 
       <aside class="bg-slate-800 p-4 rounded-lg">
@@ -83,14 +77,42 @@
       }
     });
 
-    // Top5 tweet buttons
-    document.querySelectorAll('[data-twitter]').forEach(btn => {
-      btn.addEventListener('click', ()=>{
-        const handle = btn.getAttribute('data-twitter');
-        const text = encodeURIComponent(`@${handle} Bitcoin is freedom tech. Please consider supporting open source, self-custody, and innovation.`);
-        window.open(`https://twitter.com/intent/tweet?text=${text}`,'_blank');
-      });
-    });
+    // Top5: fetch data and render cards
+    (async function renderTop5(){
+      try{
+        const res = await fetch('data/top5.json');
+        const list = await res.json();
+        const container = document.getElementById('top5');
+        list.forEach(person => {
+          const card = document.createElement('div');
+          card.className = 'flex items-center gap-3 bg-slate-700 p-3 rounded';
+
+          const img = document.createElement('img');
+          img.src = person.image;
+          img.alt = person.name;
+          img.className = 'w-12 h-12 rounded-full object-cover';
+
+          const meta = document.createElement('div');
+          meta.className = 'flex-1';
+          meta.innerHTML = `<div class=\"font-semibold\">${person.name}</div><div class=\"text-xs text-muted\">${person.office}</div><div class=\"text-xs text-muted mt-1\">${person.note}</div>`;
+
+          const btn = document.createElement('button');
+          btn.className = 'ml-3 px-3 py-1 bg-blue-500 rounded text-sm';
+          btn.textContent = 'Tweet';
+          btn.addEventListener('click', ()=>{
+            const text = encodeURIComponent(`@${person.twitter} Bitcoin is a freedom technology — please support responsible innovation, self-custody, and open source development. #Bitcoin #OpenSource`);
+            window.open(`https://twitter.com/intent/tweet?text=${text}`,'_blank');
+          });
+
+          card.appendChild(img);
+          card.appendChild(meta);
+          card.appendChild(btn);
+          container.appendChild(card);
+        });
+      }catch(e){
+        console.error('Top5 load error', e);
+      }
+    })();
   </script>
 </body>
 </html>

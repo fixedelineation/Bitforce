@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Sen. Elizabeth Warren",
+    "office": "Senator (MA)",
+    "twitter": "SenWarren",
+    "image": "https://unavatar.io/twitter/SenWarren",
+    "note": "Champion of strict crypto controls; co-sponsored anti-self custody proposals."
+  },
+  {
+    "name": "Rep. Brad Sherman",
+    "office": "Representative (CA-32)",
+    "twitter": "RepBradSherman",
+    "image": "https://unavatar.io/twitter/RepBradSherman",
+    "note": "Called for banning cryptocurrency; frequent critic of crypto."
+  },
+  {
+    "name": "Sen. Sherrod Brown",
+    "office": "Senator (OH)",
+    "twitter": "SenSherrodBrown",
+    "image": "https://unavatar.io/twitter/SenSherrodBrown",
+    "note": "Advocate for tight regulation of digital assets as a banking concern."
+  },
+  {
+    "name": "Rep. Stephen Lynch",
+    "office": "Representative (MA-08)",
+    "twitter": "RepStephenLynch",
+    "image": "https://unavatar.io/twitter/RepStephenLynch",
+    "note": "Proposed KYC-heavy bills that would affect on-chain privacy."
+  },
+  {
+    "name": "Sen. Dick Durbin",
+    "office": "Senator (IL)",
+    "twitter": "SenatorDurbin",
+    "image": "https://unavatar.io/twitter/SenatorDurbin",
+    "note": "Co-sponsored anti-crypto measures and warned of systemic risk."
+  }
+]
